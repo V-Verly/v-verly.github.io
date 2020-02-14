@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Note," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta name="keywords" content="Note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「笔记」技术面基础知识学习笔记">
+<meta property="og:url" content="https://v-verly.github.io/2020/02/13/Notes-of-CS/index.html">
+<meta property="og:site_name" content="Verly&#39;s Blog">
+<meta property="og:description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
+<meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e92d0ebc-7d46-413b-aec1-34a39602f787.png">
+<meta property="og:updated_time" content="2020-02-14T08:22:14.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「笔记」技术面基础知识学习笔记">
+<meta name="twitter:description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta name="twitter:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://v-verly.github.io/2020/02/13/Notes-of-CS/"/>
+
+
+
+
+
+  <title>「笔记」技术面基础知识学习笔记 | Verly's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Verly's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-友链">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://v-verly.github.io/2020/02/13/Notes-of-CS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Verly">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Verly's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">「笔记」技术面基础知识学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-13T00:00:00+08:00">
+                2020-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<p>自用。</p>
+<h1 id="TO-DO-List"><a href="#TO-DO-List" class="headerlink" title="TO-DO List"></a>TO-DO List</h1><p>OS，计网，数据库(基础/MySQL/Redis)</p>
+<p>C++内容及新特性，Golang，MIT6.824分布式课程</p>
+<p>Linux，Git，Docker</p>
+<p>可能需要复习一些算法竞赛不常用的数据结构课程内容</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://cyc2018.github.io/CS-Notes/#/README" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes/#/README</a></p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="UDP和TCP的特点"><a href="#UDP和TCP的特点" class="headerlink" title="UDP和TCP的特点"></a>UDP和TCP的特点</h3><ul>
+<li><p>用户数据报协议UDP是无连接的，尽最大可能交付，没有拥塞控制。面向报文。支持一对一、一对多、多对一、多对多的交互通信。</p>
+</li>
+<li><p>传输控制协议TCP是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流。每一条TCP连接只能是点对点的（一对一）。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无连接</td>
+<td>面向连接</td>
+</tr>
+<tr>
+<td>尽最大可能交付</td>
+<td>可靠交付</td>
+</tr>
+<tr>
+<td>无拥塞控制</td>
+<td>有流量控制、拥塞控制</td>
+</tr>
+<tr>
+<td>面向报文</td>
+<td>面向字节流</td>
+</tr>
+<tr>
+<td>支持一对一、一对多、多对一、多对多的交互通信</td>
+<td>只能是一对一的</td>
+</tr>
+</tbody>
+</table>
+<h3 id="TCP首部格式"><a href="#TCP首部格式" class="headerlink" title="TCP首部格式"></a>TCP首部格式</h3><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png" alt="img"></p>
+<ol>
+<li><p>序号：用于对字节流进行编号。例如序号为301，表示第一个字节的编号为301，如果携带的数据长度为100字节，那么下一个报文段的序号应为401.</p>
+</li>
+<li><p>确认号：期望收到的下一个报文段序号。</p>
+</li>
+<li><p>数据偏移：数据部分距离报文段起始处的偏移量。实际上指首部长度。</p>
+</li>
+<li><p>确认ACK：当ACK=1时确认号子段有效，否则无效。TCP规定，在连接建立后所有传送的报文段都必须把ACK置1.</p>
+</li>
+<li><p>同步SYN：在连接建立时用来同步序号。当SYN=1，ACK=0时表示时表示这是一个连接请求报文段。若对方同意建立连接，则相应报文中SYN=1，ACK=1</p>
+</li>
+<li><p>终止FIN：用来释放一个连接，当FIN=1时，表示此报文段的发送方的数据已发送完毕，并要求释放连接。</p>
+</li>
+<li><p>窗口：窗口值作为接收方让发送方设置其发送窗口的依据。之所以有这个限制，是因为接收方的数据缓存空间是有限的。</p>
+</li>
+</ol>
+<h3 id="TCP的三次握手"><a href="#TCP的三次握手" class="headerlink" title="TCP的三次握手"></a>TCP的三次握手</h3><p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e92d0ebc-7d46-413b-aec1-34a39602f787.png" alt="img"></p>
+<p>假设A为客户端，B为服务器端。</p>
+<ol>
+<li><p>B处于LISTEN（监听）状态，等待客户的连接请求。</p>
+</li>
+<li><p>A向B发送连接请求报文，SYN=1，ACK=0，选择一个初始的序号x。</p>
+</li>
+<li><p>B收到连接请求报文，如果同意建立连接，则向A发送连接确认报文，SYN=1，ACK=1，确认号为x+1，同时选择一个初始的序号y。</p>
+</li>
+<li><p>A收到B的连接确认报文后，还要向B发出确认，确认号为y+1，序号为x+1</p>
+</li>
+<li><p>B收到A的确认后，连接建立。</p>
+</li>
+</ol>
+<p><strong>Q：为什么需要进行三次握手/两次握手可以吗？</strong></p>
+<p>第三次握手是为了防止失效的连接请求到达服务器，让服务器错误打开连接。</p>
+<p>客户端发送的连接请求如果在网络中滞留，就会隔很长一段时间才能收到服务器端发回的连接确认。客户端等待一个超时重传时间后，就会重新请求连接。但是这个滞留的连接最后还是会到达服务器。<strong>如果不进行三次握手，那么服务器就会打开两个连接。</strong> 如果有第三次握手，客户端会忽略服务器之后发送的对滞留请求的连接确认，不进行第三次握手。因此不会再次打开连接。</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><ol>
+<li><p>1XX：服务器收到请求，需要请求者继续操作</p>
+<p> 100/Continue:目前状态正常，客户端可以继续发送请求或者忽略这个响应</p>
+</li>
+<li><p>2XX：成功，操作被成功接收并处理</p>
+<p> 200/OK:请求成功，一般用于GET与POST请求</p>
+<p> 201/Created：已创建。成功请求并创建了新的资源</p>
+<p> 202/Accepted：已接受。已经接受请求，但未处理完成</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>3XX：重定向</p>
+</li>
+<li><p>4XX：客户端错误</p>
+</li>
+<li><p>5XX：服务器错误</p>
+<p> 500：服务器内部错误</p>
+<p> 502: 作为网关或代理工作的服务器尝试执行请求时，从远程服务器接收到了一个无效的响应</p>
+<p> 503：服务器超负载或进行停机维护，无法处理请求</p>
+</li>
+</ol>
+<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="C-11-14新特性"><a href="#C-11-14新特性" class="headerlink" title="C++11/14新特性"></a>C++11/14新特性</h2><p><code>constexpr</code>显式声明函数或对象构造函数在编译器会成为常数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">len</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="number">5</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">int</span> <span class="title">const_len</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="number">5</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> arr1[len()]; <span class="comment">//非法</span></span><br><span class="line">    <span class="keyword">char</span> arr2[const_len()]; <span class="comment">//合法</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//constexpr的函数可以使用递归</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n == <span class="number">1</span> || n == <span class="number">2</span> ? <span class="number">1</span> : fib(n - <span class="number">1</span>) + fib(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//C++14中，constexpr函数可以在内部使用局部变量、循环和分支等简单语句</span></span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">int</span> <span class="title">fibonacci</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> fibonacci(n - <span class="number">1</span>) + fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>auto</code>,<code>decltype</code>类型推导，尾返回类型  </p>
+<p><code>auto</code>对变量进行类型推导，不能用于函数传参/数组类型推导</p>
+<p><code>decltype</code>对表达式进行类型推导</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">auto</span> y = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">decltype</span>(x + y) z;</span><br><span class="line"></span><br><span class="line"><span class="comment">//C++11尾返回类型</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</span><br><span class="line">auto add(T x, U y) -&gt; decltype(x + y) &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//C++14</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(T x, U y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尖括号&gt;</p>
+<p>在C++11中，连续的右尖括号<code>&gt;&gt;</code>将变得合法并且能够通过编译。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; arr;</span><br></pre></td></tr></table></figure>
+<p>默认模板参数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keyword">int</span>, <span class="keyword">typename</span> U = <span class="keyword">int</span>&gt;</span><br><span class="line"><span class="keyword">auto</span> add(T x, U y) -&gt; <span class="keyword">decltype</span>(x + y) &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Note/" rel="tag"># Note</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/22/Codeforces-1253F/" rel="next" title="「CodeForces-1253F」Cheap Robot(最小瓶颈路)">
+                <i class="fa fa-chevron-left"></i> 「CodeForces-1253F」Cheap Robot(最小瓶颈路)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/header.jpg"
+                alt="Verly" />
+            
+              <p class="site-author-name" itemprop="name">Verly</p>
+              <p class="site-description motion-element" itemprop="description">有时候是一只海豹</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/V-Verly" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Verly0206@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://message/?uin=945034936" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://t.me/VerIy" target="_blank" title="telegram">
+                      
+                        <i class="fa fa-fw fa-telegram"></i>telegram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TO-DO-List"><span class="nav-number">1.</span> <span class="nav-text">TO-DO List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">3.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">3.1.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP和TCP的特点"><span class="nav-number">3.1.1.</span> <span class="nav-text">UDP和TCP的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP首部格式"><span class="nav-number">3.1.2.</span> <span class="nav-text">TCP首部格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP的三次握手"><span class="nav-number">3.1.3.</span> <span class="nav-text">TCP的三次握手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">3.2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">3.2.1.</span> <span class="nav-text">HTTP状态码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">4.</span> <span class="nav-text">C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-11-14新特性"><span class="nav-number">4.1.</span> <span class="nav-text">C++11/14新特性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Verly</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
