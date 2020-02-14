@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta name="description" content="自用。">
 <meta name="keywords" content="Note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「笔记」技术面基础知识学习笔记">
 <meta property="og:url" content="https://v-verly.github.io/2020/02/13/Notes-of-CS/index.html">
 <meta property="og:site_name" content="Verly&#39;s Blog">
-<meta property="og:description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta property="og:description" content="自用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
 <meta property="og:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e92d0ebc-7d46-413b-aec1-34a39602f787.png">
-<meta property="og:updated_time" content="2020-02-14T08:22:14.995Z">
+<meta property="og:updated_time" content="2020-02-14T08:37:53.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「笔记」技术面基础知识学习笔记">
-<meta name="twitter:description" content="自用。 TO-DO ListOS，计网，数据库(基础/MySQL/Redis) C++内容及新特性，Golang，MIT6.824分布式课程 Linux，Git，Docker 可能需要复习一些算法竞赛不常用的数据结构课程内容 参考资料https://cyc2018.github.io/CS-Notes/#/README 网络计算机网络UDP和TCP的特点 用户数据报协议UDP是无连接的，尽最大可">
+<meta name="twitter:description" content="自用。">
 <meta name="twitter:image" content="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/55dc4e84-573d-4c13-a765-52ed1dd251f9.png">
 
 
@@ -355,8 +355,8 @@
       
 
       
-        <a id="more"></a>
-<p>自用。</p>
+        <p>自用。</p>
+<a id="more"></a>
 <h1 id="TO-DO-List"><a href="#TO-DO-List" class="headerlink" title="TO-DO List"></a>TO-DO List</h1><p>OS，计网，数据库(基础/MySQL/Redis)</p>
 <p>C++内容及新特性，Golang，MIT6.824分布式课程</p>
 <p>Linux，Git，Docker</p>
@@ -463,6 +463,9 @@
 <p>在C++11中，连续的右尖括号<code>&gt;&gt;</code>将变得合法并且能够通过编译。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; arr;</span><br></pre></td></tr></table></figure>
 <p>默认模板参数<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T = <span class="keyword">int</span>, <span class="keyword">typename</span> U = <span class="keyword">int</span>&gt;</span><br><span class="line"><span class="keyword">auto</span> add(T x, U y) -&gt; <span class="keyword">decltype</span>(x + y) &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>变长参数模板</p>
+<p>C++11加入了新的表示方法，允许任意个数、任意类别的模板参数，同时也不需要在定义时将参数的个数固定。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>... TS&gt; <span class="class"><span class="keyword">class</span> <span class="title">Magic</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magic</span>&lt;int, std::vector&lt;int&gt;, std::map&lt;string, std::vector&lt;int&gt;&gt;&gt; <span class="title">darkMagic</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Magic</span>&lt;&gt; <span class="title">nothing</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//不希望产生的模板参数个数为零，手动定义至少一个模板参数</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Require, <span class="keyword">typename</span>... Args&gt; <span class="class"><span class="keyword">class</span> <span class="title">Nagic</span>;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
