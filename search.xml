@@ -16,7 +16,7 @@
       
         <tags>
             
-            <tag> Note </tag>
+            <tag> hide </tag>
             
         </tags>
       
@@ -242,9 +242,9 @@
       
         <tags>
             
-            <tag> 线性基 </tag>
-            
             <tag> 博弈 </tag>
+            
+            <tag> 线性基 </tag>
             
         </tags>
       
@@ -284,9 +284,9 @@
       
         <tags>
             
-            <tag> 线性基 </tag>
-            
             <tag> LCA </tag>
+            
+            <tag> 线性基 </tag>
             
         </tags>
       
@@ -326,9 +326,9 @@
       
         <tags>
             
-            <tag> BSGS </tag>
-            
             <tag> 扩展欧几里得算法 </tag>
+            
+            <tag> BSGS </tag>
             
             <tag> 模板 </tag>
             
@@ -1152,9 +1152,9 @@
       
         <tags>
             
-            <tag> Codeforces </tag>
-            
             <tag> 数论 </tag>
+            
+            <tag> Codeforces </tag>
             
             <tag> DP </tag>
             
