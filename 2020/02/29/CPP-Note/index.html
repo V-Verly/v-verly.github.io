@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="The article has been encrypted, please enter your password to view.">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Note of C++">
+<meta property="og:url" content="https://v-verly.github.io/2020/02/29/CPP-Note/index.html">
+<meta property="og:site_name" content="Verly&#39;s Blog">
+<meta property="og:description" content="The article has been encrypted, please enter your password to view.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-03T05:58:43.647Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Note of C++">
+<meta name="twitter:description" content="The article has been encrypted, please enter your password to view.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://v-verly.github.io/2020/02/29/CPP-Note/"/>
+
+
+
+
+
+  <title>Note of C++ | Verly's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Verly's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-友链">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://v-verly.github.io/2020/02/29/CPP-Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Verly">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Verly's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Note of C++</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T00:00:00+08:00">
+                2020-02-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="Please enter the password to read the blog." />
+    <label for="pass">Please enter the password to read the blog.</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+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
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/22/Codeforces-1253F/" rel="next" title="「CodeForces-1253F」Cheap Robot(最小瓶颈路)">
+                <i class="fa fa-chevron-left"></i> 「CodeForces-1253F」Cheap Robot(最小瓶颈路)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/header.jpg"
+                alt="Verly" />
+            
+              <p class="site-author-name" itemprop="name">Verly</p>
+              <p class="site-description motion-element" itemprop="description">有时候是一只海豹</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/V-Verly" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:Verly0206@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="tencent://message/?uin=945034936" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://t.me/VerIy" target="_blank" title="telegram">
+                      
+                        <i class="fa fa-fw fa-telegram"></i>telegram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Verly</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+</body>
+</html>
