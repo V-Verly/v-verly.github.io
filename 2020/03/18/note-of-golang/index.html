@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和blog可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是偏向工程类的golang学习笔记，持续更新（咕）">
+<meta name="description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和资料可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是面向工程的golang学习笔记，持续更新（咕）">
 <meta name="keywords" content="Note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Note of Golang">
+<meta property="og:title" content="Golang学习笔记">
 <meta property="og:url" content="https://v-verly.github.io/2020/03/18/note-of-golang/index.html">
 <meta property="og:site_name" content="Verly&#39;s Blog">
-<meta property="og:description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和blog可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是偏向工程类的golang学习笔记，持续更新（咕）">
+<meta property="og:description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和资料可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是面向工程的golang学习笔记，持续更新（咕）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-18T12:28:33.456Z">
+<meta property="og:updated_time" content="2020-03-18T15:39:13.465Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Note of Golang">
-<meta name="twitter:description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和blog可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是偏向工程类的golang学习笔记，持续更新（咕）">
+<meta name="twitter:title" content="Golang学习笔记">
+<meta name="twitter:description" content="开一个坑学go   作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试 又鉴于我智力比较低下，光是看书和资料可能看完就忘了，所以需要记一下笔记 所以这篇东西应该是面向工程的golang学习笔记，持续更新（咕）">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Note of Golang | Verly's Blog</title>
+  <title>Golang学习笔记 | Verly's Blog</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Note of Golang</h1>
+          <h1 class="post-title" itemprop="name headline">Golang学习笔记</h1>
         
 
         <div class="post-meta">
@@ -355,12 +355,16 @@
         <blockquote>
 <p>开一个坑学go  </p>
 <p>作为底层算法竞赛选手，我cpp长年只会if else for for for没有项目经验(哪怕是玩具级别的项目经验)，不知道我这么垃圾怎么过的面试</p>
-<p>又鉴于我智力比较低下，光是看书和blog可能看完就忘了，所以需要记一下笔记</p>
-<p>所以这篇东西应该是偏向工程类的golang学习笔记，持续更新（咕）</p>
+<p>又鉴于我智力比较低下，光是看书和资料可能看完就忘了，所以需要记一下笔记</p>
+<p>所以这篇东西应该是面向工程的golang学习笔记，持续更新（咕）</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="To-do-List"><a href="#To-do-List" class="headerlink" title="To-do List"></a>To-do List</h2><p>语法在二月初摸鱼式过了一遍，应该没太大问题</p>
 <p>目前要做的应该是读《go语言圣经》</p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>常用的编程范式有命令式编程/函数式编程/逻辑式编程等。命令式编程是面向计算机硬件的抽象，有变量（对应了存储单元）、赋值语句（获取、存储指令）、表达式（内存应用、算术运算）和控制语句（跳转语句）。命令式程序是一个冯诺依曼机的指令序列。它关心的是“解决问题的步骤”，即程序员如何将自己要做的事的每一个步骤通过程序语言描述给机器运行。</p>
+<p>函数式编程中的函数指的不是计算机中的函数，而是指数学中的函数，即自变量的映射。函数式编程中的变量也不是命令式编程的变量（即存储状态的单元），而是代数中的变量，它是不可变的。</p>
+<p>从理论上说，函数式语言不是在冯诺依曼体系结构的机器上运行，而是通过λ演算，即<strong>变量替换</strong>的方式进行的。λ演算是图灵完备的，但在大多数情况下，函数式程序还是被编译成冯诺依曼机的机器语言指令执行。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">intSeq</span><span class="params">()</span> <span class="title">func</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	i := <span class="number">0</span></span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">		i += <span class="number">1</span></span><br><span class="line">		<span class="keyword">return</span> i</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> &#123;</span><br><span class="line">	nexInt := intSeq()</span><br><span class="line"></span><br><span class="line">	fmt.Println(nexInt())</span><br><span class="line">	fmt.Println(nexInt())</span><br><span class="line">	fmt.Println(nexInt())</span><br><span class="line"></span><br><span class="line">	newInts := intSeq()</span><br><span class="line">	fmt.Println(newInts())</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:1 2 3 1</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -563,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#To-do-List"><span class="nav-number">1.</span> <span class="nav-text">To-do List</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#To-do-List"><span class="nav-number">1.</span> <span class="nav-text">To-do List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">2.</span> <span class="nav-text">函数式编程</span></a></li></ol></div>
             
 
           </div>
